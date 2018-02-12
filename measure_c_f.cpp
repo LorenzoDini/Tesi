@@ -1,4 +1,4 @@
-//Questa è la versione con un operatore in più che prima non guardavo e debuggata con valgrind, dovrebbe funzionare. Devo aggiungere solo il reader con il check. Ho corretto il modo di calcolare C con l'operatore in più, ULTIMA.
+//Questa è la versione che ho deciso sarà la principale, ed è la prima dopo il commit
 
 /*
 Le variabili in questione le prendo in questo modo, dall'inputfile:
