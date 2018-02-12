@@ -1,0 +1,97 @@
+set fit quiet
+set fit errorvariables
+
+set print "continuum_c_u_Rs" 
+
+f(x) = a + b*x**(-2)
+a=1
+b=1
+fit f(x) 'continuum_meas_u3' u 1:2:3 via a, b
+plot "./continuum_meas_u3" u 1:2:3 w e, f(x) 
+a_err=a_err/FIT_STDFIT
+print "0.075","\t",a,"\t",a_err
+
+a=1
+b=1
+fit f(x) 'continuum_meas_u4' u 1:2:3 via a, b
+plot "./continuum_meas_u4" u 1:2:3 w e, f(x) 
+a_err=a_err/FIT_STDFIT
+print "0.113","\t",a,"\t",a_err
+
+a=1
+b=1
+fit f(x) 'continuum_meas_u5' u 1:2:3 via a, b
+plot "./continuum_meas_u5" u 1:2:3 w e, f(x) 
+a_err=a_err/FIT_STDFIT
+print "0.15","\t",a,"\t",a_err
+
+a=1
+b=1
+fit f(x) 'continuum_meas_u6' u 1:2:3 via a, b
+plot "./continuum_meas_u6" u 1:2:3 w e, f(x) 
+a_err=a_err/FIT_STDFIT
+print "0.188","\t",a,"\t",a_err
+
+
+set print "continuum_c_d_Rs" 
+
+a=1
+b=1
+fit f(x) 'continuum_meas_d3' u 1:2:3 via a, b
+plot "./continuum_meas_d3" u 1:2:3 w e, f(x) 
+a_err=a_err/FIT_STDFIT
+print "0.075","\t",a,"\t",a_err
+
+a=1
+b=1
+fit f(x) 'continuum_meas_d4' u 1:2:3 via a, b
+plot "./continuum_meas_d4" u 1:2:3 w e, f(x) 
+a_err=a_err/FIT_STDFIT
+print "0.113","\t",a,"\t",a_err
+
+a=1
+b=1
+fit f(x) 'continuum_meas_d5' u 1:2:3 via a, b
+plot "./continuum_meas_d5" u 1:2:3 w e, f(x) 
+a_err=a_err/FIT_STDFIT
+print "0.15","\t",a,"\t",a_err
+
+a=1
+b=1
+fit f(x) 'continuum_meas_d6' u 1:2:3 via a, b
+plot "./continuum_meas_d6" u 1:2:3 w e, f(x) 
+a_err=a_err/FIT_STDFIT
+print "0.188","\t",a,"\t",a_err
+
+
+set print "continuum_c_s_Rs" 
+
+a=1
+b=1
+fit f(x) 'continuum_meas_s3' u 1:2:3 via a, b
+plot "./continuum_meas_s3" u 1:2:3 w e, f(x) 
+a_err=a_err/FIT_STDFIT
+print "0.075","\t",a,"\t",a_err
+
+a=1
+b=1
+fit f(x) 'continuum_meas_s4' u 1:2:3 via a, b
+plot "./continuum_meas_s4" u 1:2:3 w e, f(x) 
+a_err=a_err/FIT_STDFIT
+print "0.113","\t",a,"\t",a_err
+
+a=1
+b=1
+fit f(x) 'continuum_meas_s5' u 1:2:3 via a, b
+plot "./continuum_meas_s5" u 1:2:3 w e, f(x) 
+a_err=a_err/FIT_STDFIT
+print "0.15","\t",a,"\t",a_err
+
+a=1
+b=1
+fit f(x) 'continuum_meas_s6' u 1:2:3 via a, b
+plot "./continuum_meas_s6" u 1:2:3 w e, f(x) 
+a_err=a_err/FIT_STDFIT
+print "0.188","\t",a,"\t",a_err
+
+

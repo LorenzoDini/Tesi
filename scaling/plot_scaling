@@ -1,0 +1,59 @@
+set terminal postscript eps enhanced color
+
+plot "./NT_8/c_u_flow_1_Rs" u 1:2:3 w e 
+replot "./NT_10/c_u_flow_1_Rs" u 1:2:3 w e 
+replot "./NT_12/c_u_flow_1_Rs" u 1:2:3 w e 
+replot "./NT_16/c_u_flow_1_Rs" u 1:2:3 w e 
+#da qui serve per plottare anche le estrapolazioni al continuo in funzione di R_s, per poi estrapolarle a R=0
+set fit errorvariables
+f(x) = a + b*x
+a=1
+b=1
+fit f(x) 'continuum_c_u_Rs' u 1:2:3 via a, b
+replot "./continuum_c_u_Rs" u 1:2:3 w e, f(x)
+set print "risultati_finali"
+print "# a, a_err, chi^2/dof"
+a_err = a_err/FIT_STDFIT
+print "u",a,"\t",a_err,FIT_STDFIT**2
+#confrontare questo u con il file fit_Rs0.log per vedere se va tutto bene
+
+#set grid 
+set xlabel "R_s^2 [fm^2]"
+set ylabel "C_u"
+set title "Scaling C_u"
+set key bottom right
+#set key box
+set xrange [-0.005:0.2]
+set output "c_u_scaling_T197.eps"
+plot "./NT_8/c_u_flow_1_Rs" u 1:2:3 title "NT=8" w yerrorlines , "./NT_10/c_u_flow_1_Rs" u 1:2:3 title "NT=10" w yerrorlines ,"./NT_12/c_u_flow_1_Rs" u 1:2:3 title "NT=12" w yerrorlines , "./NT_16/c_u_flow_1_Rs" u 1:2:3 title "NT=16" w yerrorlines , "./continuum_c_u_Rs" u 1:2:3 title "Continuum Extrapolation" w yerrorlines , f(x) t "Extrapolation to Rs = 0" lt 8
+
+a=1
+b=1
+fit f(x) 'continuum_c_d_Rs' u 1:2:3 via a, b
+a_err = a_err/FIT_STDFIT
+print "d",a,"\t",a_err,FIT_STDFIT**2
+set ylabel "C_d"
+set title "Scaling C_d"
+set key bottom right
+#set key box
+set xrange [-0.005:0.2]
+set output "c_d_scaling_T197.eps"
+plot "./NT_8/c_d_flow_1_Rs" u 1:2:3 title "NT=8" w yerrorlines , "./NT_10/c_d_flow_1_Rs" u 1:2:3 title "NT=10" w yerrorlines ,"./NT_12/c_d_flow_1_Rs" u 1:2:3 title "NT=12" w yerrorlines , "./NT_16/c_d_flow_1_Rs" u 1:2:3 title "NT=16" w yerrorlines , "./continuum_c_d_Rs" u 1:2:3 title "Continuum Extrapolation" w yerrorlines , f(x) t "Extrapolation to Rs = 0" lt 8
+
+
+
+a=1
+b=1
+fit f(x) 'continuum_c_s_Rs' u 1:2:3 via a, b
+a_err = a_err/FIT_STDFIT
+print "s",a,"\t",a_err,FIT_STDFIT**2
+set ylabel "C_s"
+set title "Scaling C_s"
+set key bottom left
+#set key box
+set xrange [-0.005:0.2]
+set output "c_s_scaling_T197.eps"
+plot "./NT_8/c_s_flow_1_Rs" u 1:2:3 title "NT=8" w yerrorlines , "./NT_10/c_s_flow_1_Rs" u 1:2:3 title "NT=10" w yerrorlines ,"./NT_12/c_s_flow_1_Rs" u 1:2:3 title "NT=12" w yerrorlines , "./NT_16/c_s_flow_1_Rs" u 1:2:3 title "NT=16" w yerrorlines , "./continuum_c_s_Rs" u 1:2:3 title "Continuum Extrapolation" w yerrorlines , f(x) t "Extrapolation to Rs = 0" lt 8
+
+
+

@@ -1,0 +1,39 @@
+set fit quiet
+set fit errorvariables
+
+set print "results_global" 
+print "#flav, a, a_err, ca, ca_err, b, b_err"
+
+f(x) = (a + ca/(int(x)**2)) + (b + cb/(int(x)**2))*(x-int(x))
+
+a=1
+b=1
+ca=1
+cb=0
+fit f(x) 'dati_global_fit_u' u ($1+$2):3:4 via a,b,ca 
+a_err=a_err/FIT_STDFIT
+ca_err=ca_err/FIT_STDFIT
+b_err=b_err/FIT_STDFIT
+print "0","\t",a,"\t",a_err,"\t",FIT_STDFIT**2
+
+a=1
+ca=1
+b=1
+cb=0
+fit f(x) 'dati_global_fit_d' u ($1+$2):3:4 via a,ca,b 
+a_err=a_err/FIT_STDFIT
+ca_err=ca_err/FIT_STDFIT
+b_err=b_err/FIT_STDFIT
+print "1","\t",a,"\t",a_err,"\t",FIT_STDFIT**2
+
+a=1
+ca=1
+b=1
+cb=0
+fit f(x) 'dati_global_fit_s' u ($1+$2):3:4 via a,ca,b 
+a_err=a_err/FIT_STDFIT
+ca_err=ca_err/FIT_STDFIT
+b_err=b_err/FIT_STDFIT
+print "2","\t",a,"\t",a_err,"\t",FIT_STDFIT**2
+
+
